@@ -9,6 +9,15 @@
 <body>
     <script>
         
+
+        function getComputerChoice() {
+            let choices = ["Rock", "Paper", "Scissors"];
+            let randNum = Math.floor(Math.random() * choices.length);
+            
+            return choices[randNum];
+        }
+
+        console.log(getComputerChoice());
     </script>
 </body>
 </html>
