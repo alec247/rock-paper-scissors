@@ -8,16 +8,68 @@
 </head>
 <body>
     <script>
-        
+        let computerScore = 0;
+        let playerScore = 0;
 
         function getComputerChoice() {
-            let choices = ["Rock", "Paper", "Scissors"];
+            let choices = ["rock", "paper", "scissors"];
             let randNum = Math.floor(Math.random() * choices.length);
             
             return choices[randNum];
         }
+// Make it so lose is true or false, then print out statement with corresponding choices
+        function playRound(playerSelection, computerSelection) {
+            let lose = null;
+            
+            console.log(playerSelection, computerSelection);
 
-        console.log(getComputerChoice());
+            if (playerSelection == "rock") {
+                if (computerSelection == "paper") {
+                    lose = true;
+                } else if (computerSelection == "scissors") {
+                    lose = false;
+                }
+            } else if (playerSelection == "paper") {
+                if (computerSelection == "scissors") {
+                    lose = true;
+                } else if (computerSelection == "rock") {
+                    lose = false;
+                }
+            } else if (playerSelection == "scissors") {
+                if (computerSelection == "rock") {
+                    lose = true;
+                } else if (computerSelection == "paper") {
+                    lose = false;
+                }
+            }
+//Scope issue here, scores not defined
+            if (lose === true) {
+                computerScore++;
+            } else if (lose === false) {
+                playerScore++;
+            } else {
+                playerScore += 0.5;
+                computerScore += 0.5;
+            }
+        }
+
+        function game() {
+            for (let i = 0; i < 5; i++) {
+                let getPlayerChoice = prompt("Select rock, paper, or scissors").toLowerCase();
+
+                playRound(getPlayerChoice, getComputerChoice());
+            }
+
+            if (playerScore > computerScore) {
+                console.log("You win! You scored " + playerScore + " points out of 5!");
+            } else if (playerScore < computerScore) {
+                console.log("You lose :( You scored " + playerScore + " points out of 5.");
+            } else {
+                console.log("It's a tie! You scored " + playerScore + " points.");
+            }
+        }
+
+        game();
     </script>
 </body>
 </html>
