@@ -5,71 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <script>
-        let computerScore = 0;
-        let playerScore = 0;
+    <div class="score">Your score: <span id="playerScore"></span></div>
+    <div class="score">Opponent's score: <span id="computerScore"></span></div>
 
-        function getComputerChoice() {
-            let choices = ["rock", "paper", "scissors"];
-            let randNum = Math.floor(Math.random() * choices.length);
-            
-            return choices[randNum];
-        }
-// Make it so lose is true or false, then print out statement with corresponding choices
-        function playRound(playerSelection, computerSelection) {
-            let lose = null;
-            
-            console.log(playerSelection, computerSelection);
+    <button value="rock">Rock</button>
+    <button value="paper">Paper</button>
+    <button value="scissors">Scissors</button>
 
-            if (playerSelection == "rock") {
-                if (computerSelection == "paper") {
-                    lose = true;
-                } else if (computerSelection == "scissors") {
-                    lose = false;
-                }
-            } else if (playerSelection == "paper") {
-                if (computerSelection == "scissors") {
-                    lose = true;
-                } else if (computerSelection == "rock") {
-                    lose = false;
-                }
-            } else if (playerSelection == "scissors") {
-                if (computerSelection == "rock") {
-                    lose = true;
-                } else if (computerSelection == "paper") {
-                    lose = false;
-                }
-            }
-//Scope issue here, scores not defined
-            if (lose === true) {
-                computerScore++;
-            } else if (lose === false) {
-                playerScore++;
-            } else {
-                playerScore += 0.5;
-                computerScore += 0.5;
-            }
-        }
+    <div class="selection">You chose: <span id="playerSelection"></span></div>
+    <div class="selection">Opponent chose: <span id="computerSelection"></span></div>
 
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                let getPlayerChoice = prompt("Select rock, paper, or scissors").toLowerCase();
 
-                playRound(getPlayerChoice, getComputerChoice());
-            }
-
-            if (playerScore > computerScore) {
-                console.log("You win! You scored " + playerScore + " points out of 5!");
-            } else if (playerScore < computerScore) {
-                console.log("You lose :( You scored " + playerScore + " points out of 5.");
-            } else {
-                console.log("It's a tie! You scored " + playerScore + " points.");
-            }
-        }
-
-        game();
-    </script>
+    <div class="announcement"></div>
 </body>
 </html>
